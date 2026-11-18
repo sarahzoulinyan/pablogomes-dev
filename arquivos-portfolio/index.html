@@ -2052,9 +2052,9 @@
             </div>
 
             <div class="lang-selector">
-                <button class="lang-btn active" data-lang="pt">PT</button>
+                <button class="lang-btn" data-lang="pt">PT</button>
                 <button class="lang-btn" data-lang="es">ES</button>
-                <button class="lang-btn" data-lang="en">EN</button>
+                <button class="lang-btn active" data-lang="en">EN</button>
             </div>
         </nav>
 
@@ -2089,9 +2089,9 @@
 
         <div class="mobile-lang-selector">
             <span class="label" data-i18n="lang.label">Idioma</span>
-            <button class="mobile-lang-btn active" data-lang="pt">PT</button>
+            <button class="mobile-lang-btn" data-lang="pt">PT</button>
             <button class="mobile-lang-btn" data-lang="es">ES</button>
-            <button class="mobile-lang-btn" data-lang="en">EN</button>
+            <button class="mobile-lang-btn active" data-lang="en">EN</button>
         </div>
 
         <div class="mobile-social">
@@ -3000,7 +3000,7 @@
             }
         };
 
-        let currentLang = 'pt';
+        let currentLang = 'en';
 
         function setLanguage(lang) {
             currentLang = lang;
@@ -3024,8 +3024,8 @@
             localStorage.setItem('lang', lang);
         }
 
-        const savedLang = localStorage.getItem('lang') || 'pt';
-        setLanguage(savedLang);
+        localStorage.setItem('lang', 'en');
+        setLanguage('en');
 
         document.querySelectorAll('.lang-btn, .mobile-lang-btn').forEach(btn => {
             btn.addEventListener('click', () => {
@@ -3222,12 +3222,12 @@
             e.preventDefault();
             const btn = form.querySelector('.btn');
             const original = btn.innerHTML;
-            btn.innerHTML = 'Enviando...';
+            btn.innerHTML = 'Sending...';
             btn.disabled = true;
 
             setTimeout(() => {
                 formMessage.innerHTML =
-                    '<span style="color: var(--accent);">✓ Mensagem enviada com sucesso!</span>';
+                    '<span style="color: var(--accent);">✓ Message sent successfully!</span>';
                 form.reset();
                 btn.innerHTML = original;
                 btn.disabled = false;
